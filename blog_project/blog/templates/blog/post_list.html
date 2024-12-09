@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome to My Awesome Blog{% endblock %}
+
+{% block content %}
+    <!-- Header Section -->
+    <div class="header">
+        <h1>Welcome to My Awesome Blog</h1>
+        <p>We Love Django As much as you do..!</p>
+    </div>
+
+    <div class="row mt-4">
+        <!-- Blog Posts Section -->
+        <div class="col-md-8">
+            {% for post in posts %}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">| {{ post.created_at|date:"F d, Y, h:i a" }}</h6>
+                    <p class="card-text">{{ post.content|truncatewords:30 }}</p>
+                    <a href="{{ post.id }}/" class="btn btn-primary">Read More →</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- About Section -->
+        <div class="col-md-4">
+            <div class="about-section">
+                <h4>About Us</h4>
+                <p>This awesome blog is made on the top of our Favourite full stack Framework 'Django', follow up the tutorial to learn how we made it..!</p>
+                <a href="#" class="btn btn-danger">Know More!</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
